@@ -9,6 +9,8 @@
 import UIKit
 
 class ArticlesViewController: UITableViewController {
+    
+   // var articlesArray
 
     override func viewDidLoad() {
         super.viewDidLoad()
