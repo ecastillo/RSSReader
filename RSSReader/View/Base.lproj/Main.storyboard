@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fOY-ja-DZc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="78N-eY-naO">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Sources View Controller-->
+        <!--Source List View Controller-->
         <scene sceneID="VkC-oQ-OQF">
             <objects>
-                <tableViewController id="lml-s4-knl" customClass="SourcesViewController" customModule="RSSReader" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="lml-s4-knl" customClass="SourceListViewController" customModule="RSSReader" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Pm6-9u-tCJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -33,16 +33,25 @@
                             <outlet property="delegate" destination="lml-s4-knl" id="XtX-uE-HUP"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="U0t-z2-s6h"/>
+                    <navigationItem key="navigationItem" id="U0t-z2-s6h">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Xw8-bo-tZf">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="lml-s4-knl" id="Oy3-mq-qKo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="LAX-XS-dF9" kind="show" identifier="goToSource" id="ZO0-EX-lDK"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cjQ-n2-NaJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1498" y="127"/>
         </scene>
-        <!--Articles View Controller-->
+        <!--Source View Controller-->
         <scene sceneID="yfr-x8-bTS">
             <objects>
-                <tableViewController id="LAX-XS-dF9" customClass="ArticlesViewController" customModule="RSSReader" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="LAX-XS-dF9" customClass="SourceViewController" customModule="RSSReader" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="pi9-h5-zpd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -62,28 +71,24 @@
                             <outlet property="delegate" destination="LAX-XS-dF9" id="6bZ-o9-d91"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="fOY-ja-DZc" kind="show" identifier="goToArticle" id="c3u-RF-nEf"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l3c-sc-Nei" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2297" y="127"/>
         </scene>
-        <!--Article Detail View Controller-->
+        <!--Article View Controller-->
         <scene sceneID="uXM-4J-5IE">
             <objects>
-                <viewController id="fOY-ja-DZc" customClass="ArticleDetailViewController" customModule="RSSReader" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fOY-ja-DZc" customClass="ArticleViewController" customModule="RSSReader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="F3w-rs-r4a">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Article Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVu-gr-SG0">
-                                <rect key="frame" x="0.0" y="20" width="375" height="65"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x6J-mZ-std">
-                                <rect key="frame" x="0.0" y="93" width="375" height="574"/>
+                                <rect key="frame" x="0.0" y="137" width="375" height="530"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
@@ -91,6 +96,13 @@
                                     <wkPreferences key="preferences"/>
                                 </wkWebViewConfiguration>
                             </wkWebView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Article Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FVu-gr-SG0">
+                                <rect key="frame" x="0.0" y="64" width="375" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="nAy-Mn-oT7"/>
